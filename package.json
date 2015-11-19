@@ -4,7 +4,7 @@
   "description": "Extremely minimal wrapper around node core http/https to conveniently get request and response streams",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard && node test.js"
   },
   "author": "max ogden",
   "license": "ISC",
@@ -18,5 +18,9 @@
   "homepage": "https://github.com/maxogden/request-stream#readme",
   "dependencies": {
     "debug": "^2.2.0"
+  },
+  "devDependencies": {
+    "standard": "^5.4.1",
+    "tape": "^4.2.2"
   }
 }

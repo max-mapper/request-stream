@@ -20,8 +20,9 @@ You can now use `request` to make new requests
 - **host** - defaults to the hostname from `url`
 - **path** - defaults to the path from `url`
 - **port** - defaults to the port from `url`
+- **maxRedirects** - defaults to 10
 
-`callback` is called with `(err, res)`. If there was no `err`, `res` will be a readable stream of the response data.
+`callback` is called with `(err, res)`. If there was no `err`, `res` will be a readable stream of the response data. In the event that `maxRedirects` was exceeded you will receive both an `err` and the `res` of the last redirect.
 
 Both `req` and `res` are the unmodified [`http.ClientRequest`](https://nodejs.org/api/http.html#http_class_http_clientrequest) and [`http.IncomingMessage`](https://nodejs.org/api/http.html#http_http_incomingmessage)
 
