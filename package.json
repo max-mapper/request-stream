@@ -1,0 +1,19 @@
+{
+  "name": "request-stream",
+  "version": "1.0.0",
+  "description": "Extremely minimal wrapper around node core http/https to conveniently get request and response streams",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "max ogden",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxogden/request-stream.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maxogden/request-stream/issues"
+  },
+  "homepage": "https://github.com/maxogden/request-stream#readme"
+}
