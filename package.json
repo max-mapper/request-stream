@@ -1,6 +1,6 @@
 {
   "name": "request-stream",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Extremely minimal wrapper around node core http/https to conveniently get request and response streams",
   "main": "index.js",
   "scripts": {
