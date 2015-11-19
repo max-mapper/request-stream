@@ -26,7 +26,7 @@ serverTest('redirect', function (t, done) {
 
 serverTest('infinite redirect', function (t, done) {
   r(url + '/infiniteredirect', function (err, res) {
-    t.ok(err.message.indexOf('redirects exceeded: 10') > -1, 'got err')
+    t.ok(err.message.indexOf('redirects exceeded') > -1, 'got err')
     res.pipe(concat(function (bod) {
       t.equal(bod.toString(), 'infiniteredirect', 'infiniteredirect')
       done()
@@ -36,7 +36,17 @@ serverTest('infinite redirect', function (t, done) {
 
 serverTest('maxRedirects', function (t, done) {
   r(url + '/infiniteredirect', {maxRedirects: 3}, function (err, res) {
-    t.ok(err.message.indexOf('redirects exceeded: 3') > -1, 'got err')
+    t.ok(err.message.indexOf('redirects exceeded') > -1, 'got err')
+    res.pipe(concat(function (bod) {
+      t.equal(bod.toString(), 'infiniteredirect', 'infiniteredirect')
+      done()
+    }))
+  })
+})
+
+serverTest('followRedirects false', function (t, done) {
+  r(url + '/infiniteredirect', {followRedirects: false}, function (err, res) {
+    t.notOk(err, 'no err')
     res.pipe(concat(function (bod) {
       t.equal(bod.toString(), 'infiniteredirect', 'infiniteredirect')
       done()

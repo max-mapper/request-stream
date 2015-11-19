@@ -12,15 +12,11 @@ module.exports.del = requester('DELETE')
 module.exports.head = requester('HEAD')
 
 function requester (method) {
-  var redirects = 0
-  var maxRedirects = 10
   return function httpRequest (url, opts, cb) {
     if (typeof opts === 'function') return httpRequest(url, {}, opts)
     if (typeof url === 'undefined') throw new Error('Must supply url')
     if (typeof cb === 'undefined') throw new Error('Must supply callback')
     if (opts.method) method = opts.method
-    if (opts.maxRedirects) maxRedirects = opts.maxRedirects
-
     if (!/:\/\//.test(url)) url = 'http://' + url
 
     var parsed = parseUrl(url)
@@ -34,24 +30,26 @@ function requester (method) {
       method: method,
       host: host,
       path: path,
-      port: port
+      port: port,
+      maxRedirects: 10
     }
 
     var reqOpts = xtend(defaults, opts)
     var req = mod.request(reqOpts)
-    if (debug.enabled) debug('request', JSON.stringify(reqOpts))
+    debug('request %j', reqOpts)
     req.on('error', done)
     req.on('response', function (res) {
       var redir = shouldRedirect(req, res)
       debug('response', res.statusCode)
       if (redir) {
-        if (redirects >= maxRedirects) {
-          return done(new Error('Max redirects exceeded: ' + maxRedirects), res)
+        if (opts.followRedirects === false) return done(null, res)
+        if (opts.maxRedirects === 0) {
+          return done(new Error('Max redirects exceeded'), res)
         }
         debug('redirect', redir)
         reqOpts.path = redir
+        reqOpts.maxRedirects--
         httpRequest(redir, reqOpts, done)
-        redirects++
       }
       else done(null, res)
     })
