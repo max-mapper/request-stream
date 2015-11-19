@@ -10,7 +10,7 @@ You can now use `request` to make new requests
 
 ### `var req = request(url, [opts], callback)`
 
-`req` is a writable stream. Data written to it will be written to the request upload body. You **must call** `req.end()` for the request to finish, even if you write no data to it. If you don't call `req.end()` you will never receive a response.
+`req` is a writable stream. Data written to it will be written to the request upload body. For requests wtih an upload body you **must call** `req.end()` for the request to finish, even if you write no data to it. If you don't call `req.end()` you will never receive a response.
 
 `url` is the HTTP url for this request
 

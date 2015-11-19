@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/maxogden/request-stream/issues"
   },
-  "homepage": "https://github.com/maxogden/request-stream#readme"
+  "homepage": "https://github.com/maxogden/request-stream#readme",
+  "dependencies": {
+    "debug": "^2.2.0"
+  }
 }
