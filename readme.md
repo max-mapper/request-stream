@@ -1,6 +1,15 @@
 # request-stream
 
-Extremely minimal wrapper around node core `http`/`https` to conveniently get request and response streams.
+Extremely minimal wrapper around node core `http`/`https` to get request and response streams.
+
+[![travis][travis-image]][travis-url]
+
+[travis-image]: https://img.shields.io/travis/maxogden/request-stream.svg?style=flat
+[travis-url]: https://travis-ci.org/maxogden/request-stream
+
+### why
+
+This module is under 100 lines of code, total file + folder size including `node_modules` is 150kb, compared to 4.7mb for the popular `request` module. The benefit and drawback of this module is that it doesn't have that many features. Use it if you want something low level and lightweight.
 
 ## usage
 
