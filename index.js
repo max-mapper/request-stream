@@ -1,7 +1,6 @@
 var http = require('http')
 var https = require('https')
 var parseUrl = require('url').parse
-var xtend = require('xtend')
 var debug = require('debug')('request-stream')
 
 module.exports = requester('GET')
@@ -34,7 +33,7 @@ function requester (method) {
       maxRedirects: 10
     }
 
-    var reqOpts = xtend(defaults, opts)
+    var reqOpts = Object.assign({}, defaults, opts)
     var req = mod.request(reqOpts)
     debug('request %j', reqOpts)
     req.on('error', done)
