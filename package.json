@@ -17,8 +17,7 @@
   },
   "homepage": "https://github.com/maxogden/request-stream#readme",
   "dependencies": {
-    "debug": "^2.2.0",
-    "xtend": "^4.0.1"
+    "debug": "^2.2.0"
   },
   "devDependencies": {
     "standard": "^5.4.1",
